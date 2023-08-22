@@ -1,5 +1,5 @@
 import './style.css';
-import { init, GameLoop, Sprite } from 'kontra';
+import { init, GameLoop, Sprite, initKeys, keyPressed } from 'kontra';
 
 init();
 
@@ -21,8 +21,18 @@ const player = Sprite({
   // dy: 1,
 });
 
+initKeys();
+
 let loop = GameLoop({
   update: function () {
+    if (keyPressed('d')) {
+      player.x += 3;
+    }
+
+    if (keyPressed('a')) {
+      player.x -= 3;
+    }
+
     player.update();
   },
   render: function () {
